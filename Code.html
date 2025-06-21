@@ -1,0 +1,92 @@
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void delay() {
+    for (int i = 0; i < 100000000; i++); // simple delay
+}
+
+void printLine() {
+    printf("========================================\n");
+}
+
+int main() {
+    char answer;
+    int dengue = 0, malaria = 0, typhoid = 0;
+
+    // Title
+    printLine();
+    printf("💊 AI SYMPTOM CHECKER - DISEASE PREDICTOR 💊\n");
+    printLine();
+    printf("Please answer the following questions with 'y' (yes) or 'n' (no):\n\n");
+
+    // Questions
+    printf("1. Do you have fever? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') { dengue++; malaria++; typhoid++; }
+
+    printf("2. Do you have headache? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') { dengue++; malaria++; typhoid++; }
+
+    printf("3. Do you have joint pain? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') dengue++;
+
+    printf("4. Do you have vomiting? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') malaria++;
+
+    printf("5. Do you have chills? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') typhoid++;
+
+    printf("6. Do you have stomach pain? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') malaria++;
+
+    printf("7. Do you feel weakness? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') malaria++;
+
+    printf("8. Do you have dry cough? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') typhoid++;
+
+    printf("9. Do you have skin rash? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') dengue++;
+
+    printf("10. Do your eyes hurt (eye pain)? ");
+    scanf(" %c", &answer);
+    if (answer == 'y') dengue++;
+
+    // Analysis Section
+    printLine();
+    printf("Analyzing your symptoms");
+    for (int i = 0; i < 3; i++) {
+        printf(".");
+        delay();
+    }
+    printf("\n");
+    printLine();
+
+    // Result
+    if (dengue > malaria && dengue > typhoid) {
+        printf("🦠 Based on your symptoms, you may have: \033[1;31mDENGUE\033[0m\n");
+    } else if (malaria > dengue && malaria > typhoid) {
+        printf("🦠 Based on your symptoms, you may have: \033[1;32mMALARIA\033[0m\n");
+    } else if (typhoid > dengue && typhoid > malaria) {
+        printf("🦠 Based on your symptoms, you may have: \033[1;34mTYPHOID\033[0m\n");
+    } else {
+        printf("⚠️  Symptoms unclear. Please consult a doctor.\n");
+    }
+
+    printLine();
+    printf("⚕️  This is not a medical diagnosis. See a doctor for proper treatment.\n");
+    printLine();
+
+    return 0;
+}
